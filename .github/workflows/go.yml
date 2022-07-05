@@ -23,6 +23,13 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+      
+    - name: Store artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: ubunutu-x64-bin
+        path: |
+          header-echo
   build-windows:
     runs-on: windows-latest
     steps:
@@ -38,3 +45,10 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
+    - name: Store artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: win-x64-bin
+        path: |
+          header-echo.exe
