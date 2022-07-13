@@ -17,6 +17,10 @@ func TestIntegration(t *testing.T) {
 		expectedOutput map[string]string
 	}{
 		{"^.*$", map[string]string{"X-Shabbadoo": "bingbong"}, map[string]string{"X-Shabbadoo": "bingbong"}},
+		{"^.*abba.*$", map[string]string{"X-Shabbadoo": "bingbong"}, map[string]string{"X-Shabbadoo": "bingbong"}},
+		{"^.*metallica$", map[string]string{"X-Shabbadoo": "bingbong"}, map[string]string{}},
+		{"^.*$", map[string]string{"X-Shabbadoo": "bingbong", "X-Flimflam": "foobarbaz"}, map[string]string{"X-Shabbadoo": "bingbong", "X-Flimflam": "foobarbaz"}},
+		{"^.*abba.*$", map[string]string{"X-Shabbadoo": "bingbong", "X-Flimflam": "foobarbaz"}, map[string]string{"X-Shabbadoo": "bingbong"}},
 	}
 
 	for _, c := range cases {
